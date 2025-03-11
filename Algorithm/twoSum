@@ -1,3 +1,6 @@
+
+sol 1:
+
 public int[] twoSum(int[] nums, int target) {
         TreeMap<Integer, Integer> map = new TreeMap<>();
         for(int i = 0; i < nums.length; i++){
@@ -10,5 +13,19 @@ public int[] twoSum(int[] nums, int target) {
             }
         }
         // if no solutoion
+        return null;
+}
+
+sol 2:
+
+public int[] twoSum(int[] nums, int target) {
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for(int i = 0; i < nums.length; i++){
+            int temp = target - nums[i];
+            if(map.containsKey(temp)){
+                return new int[]{map.get(temp), i};
+            }
+            map.put(nums[i],i);
+        }
         return null;
 }
