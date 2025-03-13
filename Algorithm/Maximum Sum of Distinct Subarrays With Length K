@@ -1,0 +1,19 @@
+public static long maximumSubarraySum(int[] nums, int k)  {
+        long sum = 0,max = 0;
+        Map<Integer,Integer> map = new TreeMap<>();
+        int l = 0 ,r = 0;
+        for(;r<nums.length;r++){
+            sum += nums[r];
+            Integer cnt = map.get(nums[r]); // increment map
+            map.put(nums[r], (cnt == null) ? 1 : ++cnt); // increment map
+            if((r - l + 1) == k){
+                if (map.size() == k && sum > max) max = sum;
+                sum -= nums[l];
+                int count = map.get(nums[l]); // decrement map
+                if(count == 1)map.remove(nums[l]); // decrement map
+                else map.put(nums[l],--count); // decrement map
+                l++;
+            }
+        }
+        return max;
+}
