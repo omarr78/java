@@ -36,9 +36,9 @@ class Solution {
                 l++;
             }
             while(valid(freq) && cons == k){
-                // is that valid substring starting with L
+                // how many valid substring starting with L
                 cnt+= firstCon[r] - r;
-                // is that valid substring ending with R
+                // how many valid substring ending with R
                 if(isVowel(word.charAt(l)))freq[word.charAt(l) - 'a']--;
                 else cons--;
                 l++;
