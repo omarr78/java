@@ -1,0 +1,49 @@
+class Solution {
+    public static boolean isVowel(char ch) {
+        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+            return true;
+        }
+        return false;
+    }
+    public static boolean valid(int freq[]){
+        if(freq['a' - 'a'] > 0 && freq['e' - 'a'] > 0 && freq['i' - 'a'] > 0 && freq['o' - 'a'] > 0 && freq['u' - 'a'] > 0) {
+            return true;
+        }
+        return false;
+    }
+    public static long  countOfSubstrings(String word, int k) {
+        int freq[] = new int[26];
+        int firstCon[] = new int[word.length()]; // saving the first const index after me
+        int tmp = word.length();
+        for(int i = word.length() - 1; i >= 0; i--) {
+            if(isVowel(word.charAt(i))) {
+                firstCon[i] = tmp;
+            }
+            else{
+                firstCon[i] = tmp;
+                tmp = i;
+            }
+        }
+        long cnt = 0;
+        int l = 0,r = 0,cons = 0;
+        for(;r< word.length(); r++){
+            if(isVowel(word.charAt(r))) freq[word.charAt(r)-'a']++;
+            else cons++;
+            while(valid(freq) && cons > k){   // if const is greater than k we try to reduce the const while range is valid
+                if(isVowel(word.charAt(l)) && (freq[word.charAt(l) - 'a'] - 1) <= 0)break;
+                if(isVowel(word.charAt(l)))freq[word.charAt(l) - 'a']--;
+                else cons--;
+                l++;
+            }
+            while(valid(freq) && cons == k){
+                // is that valid substring starting with L
+                cnt+= firstCon[r] - r;
+                // is that valid substring ending with R
+                if(isVowel(word.charAt(l)))freq[word.charAt(l) - 'a']--;
+                else cons--;
+                l++;
+            }
+        }
+        return cnt;
+    }
+}
