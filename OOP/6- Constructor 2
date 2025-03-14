@@ -47,3 +47,16 @@
     
 !!! note that if you need to write any constructor , then you must to write no argument like : Product()
 if you do not do that Product p1 = new Product(); will gives you an error
+
+- Finalizers
+  
+  In Java, when we create an object of the class it occupies some space in the memory (heap).
+  If we do not delete these objects, it remains in the memory and occupies unnecessary space that is not upright from the aspect of programming.
+
+  Java provides the garbage collector that works the same as the destructor.
+  The garbage collector is a program (thread) that runs on the JVM.
+  It automatically deletes the unused objects (objects that are no longer used) and frees up the memory.
+  The programmer has no need to manage memory manually.
+  It can be error-prone, vulnerable, and may lead to a memory leak.
+
+  Destructor → It is also known as finalizers.
