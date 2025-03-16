@@ -1,0 +1,54 @@
+- introduction
+  In Java, the static keyword is used to define members (variables, methods, blocks, and nested classes) that belong to the class itself, 
+  rather than to any specific instance of the class.
+  This means that static members are shared across all instances of the class,
+  and can be accessed without creating an object of the class.
+
+1. Static Variables
+  A static variable is a class-level variable that is shared among all instances of the class.
+  It is initialized only once, at the start of the program execution, and retains its value throughout the lifetime of the program.
+
+Key Points:
+  Static variables are also known as class variables.
+  They are declared using the static keyword.
+  They are stored in the method area of memory.
+  They can be accessed using the class name directly, without creating an instance of the class.
+
+Benefits:
+  Memory Efficiency: Since static variables are shared across all instances, they are stored only once in memory, reducing memory usage.
+  Global Access: Static variables can be accessed directly using the class name, making them easy to use without creating an object.
+  Consistency: Ensures that all instances of the class share the same value for the variable.
+
+public class Student {
+    String id;
+    static String year = "2025";
+    static int countId = 1;
+    String name;
+    static String college = "IT";
+
+    Student(String name){
+        this.name = name;
+        this.id = year + countId++;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student("John");
+        Student s2 = new Student("Jane");
+        Student s3 = new Student("Jack");
+
+        System.out.println(s1.toString()); // Student{id='20251', name='John'}
+        System.out.println(s2.toString()); // Student{id='20252', name='Jane'}
+        System.out.println(s3.toString()); // Student{id='20253', name='Jack'}
+    }
+}
