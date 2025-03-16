@@ -60,6 +60,7 @@ public class Main {
 
 Key Points:
   Static methods can only access static variables and other static methods directly.
+  "this" and "super" cannot be used in static context 
   They cannot access instance variables or methods directly (they need an object reference to do so).
   They are commonly used for utility functions like Math.sqrt(), Arrays.sort() that do not depend on instance variables.
 
@@ -82,3 +83,143 @@ public class Main {
         System.out.println("Difference: " + difference); // Output: Difference: 6
     }
 }
+
+
+3. Static Blocks
+  A static block is used to initialize static variables or perform some one-time setup tasks when the class is loaded into memory.
+
+Key Points:
+  Static blocks are executed only once, when the class is first loaded.
+  They are defined using the static keyword followed by a block of code {}.
+
+Benefits:
+  One-Time Initialization: Ensures that static variables are initialized only once, when the class is loaded.
+  Complex Initialization: Allows you to write complex logic for initializing static variables.
+  Order of Execution: Static blocks are executed in the order they are defined, ensuring proper initialization.
+
+Example Use Case:
+  Loading configuration files or setting up database connections when the class is loaded.
+  Initializing static variables that require complex calculations or external resources.
+
+class Database {
+    static String url;
+    static String username;
+    static String password;
+
+    // Static block
+    static {
+        url = "jdbc:mysql://localhost:3306/mydb";
+        username = "root";
+        password = "password";
+        System.out.println("Database configuration loaded.");
+    }
+
+    static void connect() {
+        System.out.println("Connecting to database with URL: " + url);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Database.connect(); // Output: Database configuration loaded. Connecting to database with URL: jdbc:mysql://localhost:3306/mydb
+    }
+}
+
+
+4. Static Classes
+  In Java, only nested classes can be declared as static.
+  A static nested class is a class that is defined inside another class but does not have access to the instance variables and methods of the outer class.
+
+Key Points:
+  A static nested class can access only static members of the outer class.
+  It can be called without creating an instance of the outer class.
+  Encapsulation: Keeps related classes together, improving code organization and readability.
+  Creating a Builder or Helper class inside another class.
+  Grouping utility classes that are only relevant to the outer class.
+  No Outer Class Dependency: Static nested classes can be instantiated without creating an instance of the outer class.
+
+code 1:
+
+public class OuterClass {
+    static int outerStaticVar = 10;
+    int outerInstanceVar = 20;
+
+    // Static nested class
+    static class InnerClass {
+        static void display() {
+            System.out.println("Outer static variable: " + outerStaticVar);
+            // System.out.println("Outer instance variable: " + outerInstanceVar); // This would cause a compilation error
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        OuterClass.InnerClass.display();
+    }
+}
+
+code 2:
+
+class OuterClass {
+    static int outerStaticVar = 10;
+    int outerInstanceVar = 20;
+
+    // Static nested class
+    static class StaticNestedClass {
+        void display() {
+            System.out.println("Outer static variable: " + outerStaticVar);
+            // System.out.println("Outer instance variable: " + outerInstanceVar); // This would cause a compilation error
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        OuterClass.StaticNestedClass nestedObj = new OuterClass.StaticNestedClass();
+        nestedObj.display(); // Output: Outer static variable: 10
+    }
+}
+
+code 3: all types of static
+
+class AppConfig {
+    // Static variable
+    static String appName;
+
+    // Static block for one-time initialization
+    static {
+        appName = "MyApp";
+        System.out.println("AppConfig loaded. App Name: " + appName);
+    }
+
+    // Static method
+    static void printAppInfo() {
+        System.out.println("App Name: " + appName);
+    }
+
+    // Static nested class
+    static class Logger {
+        static void log(String message) {
+            System.out.println("[" + appName + "] LOG: " + message);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Accessing static variable
+        System.out.println("App Name: " + AppConfig.appName);
+
+        // Calling static method
+        AppConfig.printAppInfo();
+
+        // Using static nested class
+        AppConfig.Logger.log("Application started.");
+    }
+}
+
+AppConfig loaded. App Name: MyApp
+App Name: MyApp
+App Name: MyApp
+[MyApp] LOG: Application started.
