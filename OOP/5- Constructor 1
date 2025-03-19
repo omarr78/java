@@ -2,6 +2,7 @@
   constructor name must be the same as its class name
   constructor must have no explicit return type 
   constructor cannot be (abstract, static, final , synchronized)
+  Only one constructor is called when an object is created, depending on the arguments provided.
 
 code :
 
