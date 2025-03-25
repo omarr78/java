@@ -95,7 +95,7 @@ Key Points:
 Benefits:
   One-Time Initialization: Ensures that static variables are initialized only once, when the class is loaded.
   Complex Initialization: Allows you to write complex logic for initializing static variables.
-  Order of Execution: Static blocks are executed in the order they are defined, ensuring proper initialization.
+  Order of Execution: Static blocks are executed in the order they are defined, ensuring proper initialization. (Executed Before Constructor).
 
 Example Use Case:
   Loading configuration files or setting up database connections when the class is loaded.
