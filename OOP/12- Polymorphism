@@ -75,3 +75,73 @@ public class Main {
     }
 }
 
+
+----- Can Static Methods Be Overridden in Java?
+    No, static methods cannot be overridden in Java. Instead, they are hidden if a subclass declares a static method with the same signature.
+
+----- Why Static Methods Cannot Be Overridden? Static vs. Instance Methods
+    Instance methods are bound at runtime (dynamic polymorphism).
+    Static methods are bound at compile-time (static binding).
+
+----- Method Hiding (Not Overriding)
+    If a subclass defines a static method with the same signature as the parent's static method, it hides the parent method rather than overriding it.
+    The method called depends on the reference type, not the actual object type.
+
+-- Example: Static Method Hiding vs. Instance Method Overriding
+1. Static Method (Hiding)
+
+class Parent {
+    static void show() {
+        System.out.println("Parent's static method");
+    }
+}
+
+class Child extends Parent {
+    static void show() {  // Hides Parent's show(), NOT overriding
+        System.out.println("Child's static method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        p.show(); // Calls Parent's show() (because reference is Parent)
+        
+        Child c = new Child();
+        c.show(); // Calls Child's show()
+    }
+}
+
+Output:
+Parent's static method  
+Child's static method  
+
+Key Point: The method called depends on the reference type (Parent or Child).
+
+
+2. Instance Method (Overriding - For Comparison)
+
+class Parent {
+    void display() {
+        System.out.println("Parent's instance method");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void display() {  // Properly overrides Parent's display()
+        System.out.println("Child's instance method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        p.display(); // Calls Child's display() (runtime polymorphism)
+    }
+}
+
+Output:
+Child's instance method  
+
+Key Point: The method called depends on the actual object (Child).
