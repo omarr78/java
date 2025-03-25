@@ -136,7 +136,7 @@ class Child extends Parent {
 
 public class Main {
     public static void main(String[] args) {
-        Parent p = new Child();
+        child p = new Child(); 
         p.display(); // Calls Child's display() (runtime polymorphism)
     }
 }
