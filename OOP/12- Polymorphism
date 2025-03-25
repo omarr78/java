@@ -1,0 +1,77 @@
+code : Employee payroll management system
+
+class Employee {
+    private String name;
+    private float salary;
+
+    public float getSalary() {
+        return salary;
+    }
+    // constructor
+    public Employee(String name, float salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+}
+
+public class SalariedEmployee extends Employee {
+    private float bonus;
+    
+    // constructor
+    public SalariedEmployee(String name, float salary, float bonus) {
+        super(name, salary);
+        this.bonus = bonus;
+    }
+
+    @Override
+    public float getSalary() {
+        return super.getSalary() + bonus;
+    }
+}
+
+public class DailyEmployee extends Employee {
+    private float workDayPrice;
+    private int dailyRate;
+
+    public DailyEmployee(String name, float salary, float workDayPrice, int dailyRate) {
+        super(name, salary);
+        this.workDayPrice = workDayPrice;
+        this.dailyRate = dailyRate;
+    }
+
+    @Override
+    public float getSalary() {
+        return this.workDayPrice * this.dailyRate;
+    }
+}
+
+public class HourlyEmployee extends Employee {
+    private float workOutPrice;
+    private int hourlyRate;
+
+    public HourlyEmployee(String name, float salary, float workOutPrice, int hourlyRate) {
+        super(name, salary);
+        this.workOutPrice = workOutPrice;
+        this.hourlyRate = hourlyRate;
+    }
+
+    @Override
+    public float getSalary() {
+        return this.workOutPrice * this.hourlyRate;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee e1 = new Employee("ahmed",1000);
+        SalariedEmployee e2 = new SalariedEmployee("omar",1000,300);
+        DailyEmployee e3 = new DailyEmployee("mo salah",0,50,5);
+        HourlyEmployee e4 = new HourlyEmployee("hassan",0,70,5);
+
+        System.out.println(e1.getSalary()); // 1000.0
+        System.out.println(e2.getSalary()); // 1300.0
+        System.out.println(e3.getSalary()); // 250.0
+        System.out.println(e4.getSalary()); // 350.0
+    }
+}
+
