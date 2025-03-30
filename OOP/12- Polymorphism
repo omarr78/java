@@ -145,3 +145,13 @@ Output:
 Child's instance method  
 
 Key Point: The method called depends on the actual object (Child).
+
+
+- Polymorphism means "many forms" and allows objects of different classes to be treated as objects of a common superclass.
+
+    1. Static Polymorphism (Early Binding/Compile-time Polymorphism)
+        Resolved at compile time
+        Achieved through method overloading
+   2. Dynamic Polymorphism (Late Binding/Runtime Polymorphism)
+        Resolved at runtime
+        Achieved through method overriding and inheritance
