@@ -1,0 +1,20 @@
+Final Keyword 
+  - is used to restrict the user from modifying variables, parameters , methods, or classes.
+  - final is non-access modifier
+types
+  - final varibles (const,constant varibale)
+  - final parameters
+  - final methods
+  - final classes
+how to declare the final variable
+
+public class Car {
+    final String name;
+//    1- final String name = "BMW";
+//    {
+//         2- inside the block
+//    }
+//    Car() {
+//         3- inside the constructor
+//    }
+}
