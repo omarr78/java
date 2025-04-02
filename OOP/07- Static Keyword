@@ -14,6 +14,19 @@ Key Points:
   They are stored in the method area of memory.
   They can be accessed using the class name directly, without creating an instance of the class.
 
+declaration:
+
+public class MyClass {
+    static int staticVar = 10; // Declaration with explicit initialization
+}
+
+public class MyClass {
+    static int staticVar;
+    static {
+        staticVar = 20; // Initialization in a static block
+    }
+}
+
 Benefits:
   Memory Efficiency: Since static variables are shared across all instances, they are stored only once in memory, reducing memory usage.
   Global Access: Static variables can be accessed directly using the class name, making them easy to use without creating an object.
