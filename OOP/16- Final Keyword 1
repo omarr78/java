@@ -1,12 +1,15 @@
 Final Keyword 
   - is used to restrict the user from modifying variables, parameters , methods, or classes.
   - final is non-access modifier
+  - Once any entity (variable, method or class) is declared final, it can be assigned only once. That is,
+  - 
 types
   - final varibles (const,constant varibale)
   - final parameters
   - final methods
   - final classes
-how to declare the final variable
+
+- how to declare the final variable
 
 public class Car {
     final String name;
@@ -18,3 +21,86 @@ public class Car {
 //         3- inside the constructor
 //    }
 }
+- the final variable cannot be reinitialized with another value (immutable)
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+- Execution Order (Precedence)
+    1. Static initialization blocks (if any) - run once when the class is loaded
+    2. Instance initialization blocks - run each time an object is created
+    3. Constructors - run after initialization blocks
+
+Example:
+
+public class Example {
+    final int x;
+    final int y;
+    static int z;
+
+    static{
+        z = 30;
+        System.out.println("this is the static block 1");
+
+    }
+    static{
+        z = 50;
+        System.out.println("this is the static block 2");
+    }
+
+    {
+        x = 8;
+        System.out.println("this is the block 1");
+    }
+
+    {
+        y = 10;
+        System.out.println("this is the block 2");
+    }
+
+    public Example() {
+        System.out.println("this is constructor");
+    }
+}
+
+public static void main(String[] args) {
+        Example ex = new Example();
+    }
+
+Output:
+this is the static block 1
+this is the static block 2
+this is the block 1
+this is the block 2
+this is constructor
+
+--------------------------------------------------------------------------------------------
+
+
+- Static final Variables
+  The static keyword associates a variable to a class itself, not to instances of the class.
+  Furthermore, the final keyword makes a variable immutable. Its value can’t change after initialization.
+  The combination of the two keywords helps create a constant. They are mostly named using uppercase and underscores to separate words.
+
+  - Initializing static final Variables
+    Here’s an example of how to declare a static final field and assign a value:
+
+    class Bike {
+        public static final int TIRE = 2;
+    }
+
+  - we can initialize the variable via a static initializer block:
+
+    class bike{
+    public static final int PEDAL;
+    static {
+        PEDAL = 5;
+      }
+    }
+
+  - We must initialize upon declaration or in a static initializer block
+  - We can’t reassign it after initialization
+  - Attempting to initialize it outside the initialization scope will cause an exception.
+  - Also, we can’t initialize it via the constructor
+
