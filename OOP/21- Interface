@@ -1,0 +1,69 @@
+- Example on interface 
+
+we have two interfaces (Movable , SelfDriving)
+
+Movable
++ moveUp() : void
++ moveDown() : void
++ moveLeft() : void
++ moveRight() : void
+
+SelfDriving
++ destination (String) : void
++ drive () : void
+
+and Car Class that implements two interfaces
+
+
+public interface Movable {
+    void moveUp();
+    void moveDown();
+    void moveLeft();
+    void moveRight();
+}
+
+public interface SelfDrivable {
+    void destination(String d);
+    void drive();
+}
+
+
+public class Car implements SelfDrivable, Movable {
+    private int x,y;
+
+    public Car() {}
+    public Car(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public void moveUp() {
+        y++;
+    }
+
+    @Override
+    public void moveDown() {
+        y--;
+    }
+
+    @Override
+    public void moveLeft() {
+        x--;
+    }
+
+    @Override
+    public void moveRight() {
+        x++;
+    }
+
+    @Override
+    public void destination(String d) {
+        System.out.println("Destination: " + d);
+    }
+
+    @Override
+    public void drive() {
+        System.out.println("Drive");
+    }
+}
