@@ -1,0 +1,151 @@
+1. Marker or Tagged Interface : An interface with no methods or fields that serves as a "tag" to indicate some special behavior or
+                                capability to the JVM or compiler.
+
+- Also known as:
+  Tagged interfaces
+  Signature interfaces
+  Ability interfaces
+
+- How Marker Interfaces Work
+
+class MyClass implements Serializable {
+    // Class implementation
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        
+        // Check if object is serializable
+        if (obj instanceof Serializable) {
+            System.out.println("Object can be serialized");
+            // Proceed with serialization
+        }
+    }
+}
+
+--------------------------------------------------------------------------------------------------------
+
+2. Generic Interfaces
+
+- Generic Interface: An interface that declares one or more type parameters,
+                    allowing it to work with different types while maintaining type safety.
+
+- Benefits
+  No Casting Needed: Retrieving values doesn't require explicit casting
+  Code Reuse: Same interface works for multiple types
+
+- What These Letters Typically Represent
+  T for general types
+  E for collection elements
+  K for map keys
+  V for map values
+  N for numbers
+  S, U, V for second, third, fourth types when needed
+
+Example : create a simple Box interface that can hold any type of content:
+
+// Generic interface with one type parameter T
+interface Box<T> {
+    void put(T item);
+    T get();
+}
+
+class StringBox implements Box<String> {
+    private String content;
+    
+    @Override
+    public void put(String item) {
+        this.content = item;
+    }
+    
+    @Override
+    public String get() {
+        return content;
+    }
+}
+
+class NumberBox implements Box<Integer> {
+    private Integer content;
+    
+    @Override
+    public void put(Integer item) {
+        this.content = item;
+    }
+    
+    @Override
+    public Integer get() {
+        return content;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        // String Box
+        Box<String> stringBox = new StringBox();
+        stringBox.put("Hello Generics!");
+        String message = stringBox.get();  // No casting needed
+        System.out.println(message);  // Output: Hello Generics!
+        
+        // Integer Box
+        Box<Integer> numberBox = new NumberBox();
+        numberBox.put(42);
+        int number = numberBox.get();  // Auto-unboxing works
+        System.out.println(number * 2);  // Output: 84
+    }
+}
+
+------------------------------------------------------------------------------
+
+// Generic interface with two type parameters K and V
+interface Pair<K, V> {
+    K getKey();
+    V getValue();
+    void setKey(K key);
+    void setValue(V value);
+}
+
+Implementation
+
+class SimplePair<K, V> implements Pair<K, V> {
+    private K key;
+    private V value;
+    
+    public SimplePair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+    
+    @Override
+    public K getKey() {
+        return key;
+    }
+    
+    @Override
+    public V getValue() {
+        return value;
+    }
+    
+    @Override
+    public void setKey(K key) {
+        this.key = key;
+    }
+    
+    @Override
+    public void setValue(V value) {
+        this.value = value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Pair of String and Integer
+        Pair<String, Integer> nameAge = new SimplePair<>("Alice", 30);
+        System.out.println(nameAge.getKey() + " is " + nameAge.getValue() + " years old");
+        
+        // Pair of Integer and Boolean
+        Pair<Integer, Boolean> idStatus = new SimplePair<>(101, true);
+        System.out.println("ID " + idStatus.getKey() + " is active: " + idStatus.getValue());
+    }
+}
