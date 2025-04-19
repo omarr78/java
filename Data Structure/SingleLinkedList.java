@@ -5,19 +5,19 @@ A generic singly linked list implementation that supports:
     Search operations
     Basic utility methods
 
-Method      	        Description	                                     TimeComplexity	                Space Complexity
+Method      	        Description	                                 TimeComplexity	        Space Complexity
 
 push_back(T)	        Adds element at the end	                          O(1)                           O(1)
 push_front(T)	        Adds element at the beginning	                  O(1)	                         O(1)
-push_at(T, int)	        Inserts element at specified position	          O(n) (worst case)	             O(1)
-pop_front()	            Removes first element	                          O(1)	                         O(1)
-pop_back()	            Removes last element	                          O(n) (must traverse to tail)	 O(1)
-pop_at(int)	            Removes element at specified position	          O(n) (worst case)	             O(1)
+push_at(T, int)	        Inserts element at specified position	          O(n) (worst case)	         O(1)
+pop_front()	        Removes first element	                          O(1)	                         O(1)
+pop_back()	        Removes last element	                          O(n) (must traverse to tail)	 O(1)
+pop_at(int)	        Removes element at specified position	          O(n) (worst case)	         O(1)
 find(T)	                Returns first index of matching element	          O(n)	                         O(1)
-findAtIndex(int)	    Returns element at specified index	              O(n)	                         O(1)
-isEmpty()	            Checks if list is empty	                          O(1)	                         O(1)
-print()	                Prints all elements	                              O(n)	                         O(1)
-clear()	                Empties the list	                              O(1)	                         O(1)
+findAtIndex(int)	Returns element at specified index	          O(n)	                         O(1)
+isEmpty()	        Checks if list is empty	                          O(1)	                         O(1)
+print()	                Prints all elements	                          O(n)	                         O(1)
+clear()	                Empties the list	                          O(1)	                         O(1)
 
 */
 
