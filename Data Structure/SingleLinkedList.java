@@ -1,3 +1,27 @@
+/*
+A generic singly linked list implementation that supports:
+    Insertion at front/back/specific position
+    Deletion from front/back/specific position
+    Search operations
+    Basic utility methods
+
+Method      	        Description	                                     TimeComplexity	                Space Complexity
+
+push_back(T)	        Adds element at the end	                          O(1)                           O(1)
+push_front(T)	        Adds element at the beginning	                  O(1)	                         O(1)
+push_at(T, int)	        Inserts element at specified position	          O(n) (worst case)	             O(1)
+pop_front()	            Removes first element	                          O(1)	                         O(1)
+pop_back()	            Removes last element	                          O(n) (must traverse to tail)	 O(1)
+pop_at(int)	            Removes element at specified position	          O(n) (worst case)	             O(1)
+find(T)	                Returns first index of matching element	          O(n)	                         O(1)
+findAtIndex(int)	    Returns element at specified index	              O(n)	                         O(1)
+isEmpty()	            Checks if list is empty	                          O(1)	                         O(1)
+print()	                Prints all elements	                              O(n)	                         O(1)
+clear()	                Empties the list	                              O(1)	                         O(1)
+
+*/
+
+
 
 
 
@@ -23,7 +47,9 @@ public class SingleLinkedList<T> {
         tail = node;
         size = 1;
     }
-
+    public boolean isEmpty() {
+        return head == null;
+    }
     public void push_back(T nodeData) {
         Node<T> node = new Node<>(nodeData);
         if (isEmpty()) {
@@ -139,11 +165,6 @@ public class SingleLinkedList<T> {
         }
         return temp.data;
     }
-
-
-    public boolean isEmpty() {
-        return head == null;
-    }
     public void print() {
         Node<T> temp = head;
         while (temp != null) {
@@ -152,6 +173,5 @@ public class SingleLinkedList<T> {
         }
         System.out.println();
     }
-
 }
 
