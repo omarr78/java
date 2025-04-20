@@ -50,6 +50,10 @@ public class SingleLinkedList<T> {
     public boolean isEmpty() {
         return head == null;
     }
+    public void clear() {
+        head = null;
+        tail = null;
+    }
     public void push_back(T nodeData) {
         Node<T> node = new Node<>(nodeData);
         if (isEmpty()) {
@@ -92,8 +96,7 @@ public class SingleLinkedList<T> {
     public void pop_front() {
         if (isEmpty()) return;
         if (size == 1) {
-            head = null;
-            tail = null;
+            clear();
         } else {
             head = head.next;
         }
@@ -102,8 +105,7 @@ public class SingleLinkedList<T> {
     public void pop_back() {
         if(isEmpty()) return;
         if (size == 1) {
-            head = null;
-            tail = null;
+            clear();
         } else {
             Node<T> temp = head;
             while (temp.next != tail) {
@@ -132,10 +134,7 @@ public class SingleLinkedList<T> {
         willRemoveNode.next = null;
         size--;
     }
-    public void clear() {
-        head = null;
-        tail = null;
-    }
+
 
     public int find(T nodeData) {
         Node<T> temp = head;
