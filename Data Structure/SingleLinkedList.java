@@ -53,6 +53,7 @@ public class SingleLinkedList<T> {
     public void clear() {
         head = null;
         tail = null;
+        size = 0;
     }
     public void push_back(T nodeData) {
         Node<T> node = new Node<>(nodeData);
