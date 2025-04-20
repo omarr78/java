@@ -136,19 +136,18 @@ public class SingleLinkedList<T> {
     }
 
 
-    public int find(T nodeData) {
+   public int find(T nodeData) {
         Node<T> temp = head;
-        int index = 0;
-        while (temp != null) {
+        for(int i = 0; i < size; i++){
             if (Objects.equals(nodeData, temp.data)) { // Null-safe comparison
-                return index;
+                return i;
             }
-            index++;
             temp = temp.next;
         }
         return -1;
     }
 
+    
     public T findAtIndex(int index) {
         if (index < 0) {
             throw new IndexOutOfBoundsException("Index cannot be negative: " + index);
@@ -157,13 +156,12 @@ public class SingleLinkedList<T> {
             throw new IndexOutOfBoundsException("Index cannot be greater than size: " + index);
         }
         Node<T> temp = head;
-        int currentIndex = 0;
-        while (currentIndex < index) {
+        for(int i = 0; i < index; i++){
             temp = temp.next;
-            currentIndex++;
         }
         return temp.data;
     }
+    
     public void print() {
         Node<T> temp = head;
         while (temp != null) {
