@@ -104,8 +104,8 @@ public class CircularSingleLinkedList<T> {
         } else {
             head = head.next;
             tail.next = head;
+            size--;
         }
-        size--;
     }
     public void pop_back() {
         if(isEmpty()) return;
@@ -118,8 +118,8 @@ public class CircularSingleLinkedList<T> {
             }
             temp.next = head;
             tail = temp;
+            size--;
         }
-        size--;
     }
     public void pop_at(int pos) {
         if (pos <= 0) {
