@@ -109,8 +109,8 @@ public class DoublyLinkedList<T> {
         } else {
             head = head.next;
             head.prev = null;
+             size--;
         }
-        size--;
     }
     public void pop_back() {
         if(isEmpty()) return;
@@ -119,8 +119,8 @@ public class DoublyLinkedList<T> {
         } else {
            tail = tail.prev;
            tail.next = null;
+            size--;
         }
-        size--;
     }
     public void pop_at(int pos) {
         if (pos <= 0) {
