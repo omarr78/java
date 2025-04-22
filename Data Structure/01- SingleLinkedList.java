@@ -100,8 +100,8 @@ public class SingleLinkedList<T> {
             clear();
         } else {
             head = head.next;
+            size--;
         }
-        size--;
     }
     public void pop_back() {
         if(isEmpty()) return;
@@ -114,8 +114,8 @@ public class SingleLinkedList<T> {
             }
             temp.next = null;
             tail = temp;
+            size--;
         }
-        size--;
     }
     public void pop_at(int pos) {
         if (pos <= 0) {
