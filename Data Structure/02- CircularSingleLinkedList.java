@@ -153,6 +153,9 @@ public class CircularSingleLinkedList<T> {
         if (index < 0) {
             throw new IndexOutOfBoundsException("Index cannot be negative: " + index);
         }
+        if (isEmpty()) {
+            throw new IndexOutOfBoundsException("List is empty");
+        }
         if(index >= size){
             throw new IndexOutOfBoundsException("Index cannot be greater than size: " + index);
         }
