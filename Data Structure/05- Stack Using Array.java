@@ -1,4 +1,9 @@
 /*
+
+- Stack using Array
+  ✓ Easy to implement 
+  ✗ fixde size
+
 Constructor Stack(int size)
   Time: O(1) - Just initializes variables
   Space: O(n) - Allocates array of size n
