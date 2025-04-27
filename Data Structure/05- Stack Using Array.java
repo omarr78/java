@@ -96,6 +96,7 @@ public class Stack<T> {
         while(tmp != -1){
             System.out.print(arr[tmp--] + " ");
         }
+        System.out.println();
     }
     public int size() {
         return top + 1;
