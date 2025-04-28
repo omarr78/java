@@ -8,12 +8,12 @@ Method	                  TimeComplexity	                 Space Complexity
 Node(T value)	               O(1)	                              O(1)
 createFirstNode()	           O(1)	                              O(1)
 isEmpty()	                   O(1)	                              O(1)
-clear()                        O(1)	                              O(1)
+clear()                      O(1)	                              O(1)
 push(T nodeData)	           O(1)                               O(1)
 pop()	                       O(1)	                              O(1)
 top()	                       O(1)	                              O(1)
 length()	                   O(1)	                              O(1)
-print()	                       O(n)	                              O(1)
+print()	                     O(n)	                              O(1)
 
 
 */
