@@ -35,7 +35,7 @@ import java.util.EmptyStackException;
 
 public class Stack<T> {
     Node<T> top;
-    int size = 0;
+    private int size = 0;
 
     public boolean isEmpty() {
         return top == null;
