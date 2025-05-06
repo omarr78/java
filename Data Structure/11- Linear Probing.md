@@ -1,3 +1,27 @@
+# Linear Probing Hash Table Implementation
+
+## Algorithm Overview
+
+Linear probing is a collision resolution technique for hash tables. When a collision occurs (the slot is already occupied), the algorithm searches sequentially for the next available slot.
+
+### Algorithm Steps:
+
+1. **Calculate the hash key**:  
+   `key = data % size`
+
+2. **Check if hashTable[key] is empty**:
+   - If empty: store the value directly (`hashTable[key] = data`)
+   - If occupied: proceed to step 3
+
+3. **Handle collision**:
+   - Check next index using: `key = (key + 1) % size`
+   - If available, store the value
+   - If occupied, repeat until empty slot is found
+
+## Java Implementation
+
+```java
+
 package org.example;
 
 import java.util.Arrays;
@@ -99,3 +123,8 @@ public class LinearProbing {
         }
     }
 }
+
+```
+
+
+
