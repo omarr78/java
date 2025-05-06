@@ -9,7 +9,7 @@ Quadratic probing operates by taking the original hash index and adding successi
 
 ![quadratic](https://github.com/user-attachments/assets/81aaf220-bb7b-45f0-9ac7-51b866b05671)
 
-# prime capacity -> guaranteed to check at least half of the slots (⌈capacity/2⌉
+## prime capacity -> guaranteed to check at least half of the slots (⌈capacity/2⌉
 
 - Quadratic Probing Example and Probe Sequence Demonstration
 
