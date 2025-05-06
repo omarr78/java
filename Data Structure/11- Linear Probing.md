@@ -18,7 +18,7 @@ Linear probing is a collision resolution technique for hash tables. When a colli
    - If available, store the value
    - If occupied, repeat until empty slot is found
 
-## Java Implementation
+## Implementation
 
 ```java
 
