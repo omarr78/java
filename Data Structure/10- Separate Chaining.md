@@ -3,7 +3,7 @@
 The idea is to make each cell of the hash table point to a linked list of records that have the same hash function value.
 Chaining is simple but requires additional memory outside the table.
 
-## Java Implementation
+## Implementation
 
 ```java
 package org.example;
