@@ -34,4 +34,19 @@ public class Sort {
         }
         return arr;
     }
+    static int[] insertion_sort(int[] arr) {
+        int size = arr.length;
+        for (int i = 1; i < size; i++) {
+            int key = arr[i];
+            int j = i - 1;
+
+            // Shift elements greater than key to the right
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];  // Shift right
+                j--;
+            }
+            arr[j + 1] = key;  // Insert key in correct position
+        }
+        return arr;
+    }
 }
