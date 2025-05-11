@@ -1,5 +1,8 @@
-- Constructor Chaining : when a constructor calls another constructor of the same class then this is called constructor chaining
-  
+## Constructor Chaining
+- when a constructor calls another constructor of the same class then this is called constructor chaining
+
+## Example code
+```java
     public Product(String name , String description, float price, int quantity, float discount){
         this.name = name;
         this.description = description;
@@ -13,14 +16,22 @@
         this.color = color;
         System.out.println("constructor 1");
     }
+    public class Main {
+      public static void main(String[] args) {
+        Product p1 = new Product("camera","Auto focus...",25999,1,5,"red");
+    }
+```
+## output
+```{text}
+constructor 2
+constructor 1
+```
 
-    Product p1 = new Product("camera","Auto focus...",25999,1,5,"red");
-    
-    will print : 
-    constructor 2
-    constructor 1
-- Copy constructor : A Copy constructor in java class is a constructor that creates an object using another object of the same java class
+## Copy constructor 
+- A Copy constructor in java class is a constructor that creates an object using another object of the same java class
 
+## Example code
+``` java
     public Product(String name , String description, float price, int quantity, float discount){
         this.name = name;
         this.description = description;
@@ -37,26 +48,27 @@
     public Product(Product obj){  // copy constructor
         this(obj.name, obj.description, obj.price, obj.quantity, obj.discount, obj.color);
     }
-
-
     public static void main(String[] args) {
         Product p1 = new Product("camera","Auto focus...",25999,1,5,"red");
         Product p2 = new Product(p1);
         System.out.println(p2.toString()); // Product{name='camera', description='Auto focus...', price=25999.0, quantity=1, discount=5.0, color='red'}
     }
-    
-!!! note that if you need to write any constructor , then you must to write no argument like : Product()
-if you do not do that Product p1 = new Product(); will gives you an error
+```
+> **Note**
+>
+> If you need to write any constructor, then you must write a no-argument constructor like:  `Product()`  If you do not do that, `Product p1 = new Product();` will give you an error.
 
-- Finalizers
-  
-  In Java, when we create an object of the class it occupies some space in the memory (heap).
-  If we do not delete these objects, it remains in the memory and occupies unnecessary space that is not upright from the aspect of programming.
+### Finalizers
 
-  Java provides the garbage collector that works the same as the destructor.
-  The garbage collector is a program (thread) that runs on the JVM.
-  It automatically deletes the unused objects (objects that are no longer used) and frees up the memory.
-  The programmer has no need to manage memory manually.
-  It can be error-prone, vulnerable, and may lead to a memory leak.
+In Java, when we create an object of the class, it occupies some space in the memory (heap).  
+If we do not delete these objects, they remain in the memory and occupy unnecessary space, which is not ideal from a programming perspective.
 
-  Destructor → It is also known as finalizers.
+Java provides a **garbage collector** that works similarly to a destructor.  
+
+Key points about garbage collection:
+- The garbage collector is a program (thread) that runs on the JVM.
+- It automatically deletes unused objects (objects that are no longer referenced) and frees up memory.
+- The programmer does not need to manage memory manually.
+- Manual memory management can be error-prone, vulnerable, and may lead to memory leaks.
+
+**Destructor** → In Java, this is known as a **finalizer** (though generally discouraged in modern Java).
