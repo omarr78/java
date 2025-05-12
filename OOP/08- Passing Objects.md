@@ -1,8 +1,14 @@
-1. Passing Objects to Methods
-  In Java, when you pass an object to a method, you are passing the reference to that object.
-  This means that the method receives a copy of the reference to the object, not a copy of the object itself.
-  As a result, any changes made to the object inside the method will affect the original object.
 
+# Working with Objects in Java
+
+## 1. Passing Objects to Methods
+
+In Java, when you pass an object to a method, you are **passing the reference to that object**.
+
+* The method receives a **copy of the reference**, not a copy of the object itself.
+* So, **modifying the object inside the method will affect the original object**.
+
+```java
 class Dog {
     String name;
 
@@ -24,37 +30,54 @@ public class Main {
         dog.name = "Max";
     }
 }
+```
 
-2. Passing by Value vs. Passing by Reference
-  Java is always pass-by-value in premative data types.
-  However, when you pass an object, the value being passed is the reference to the object,
+---
 
+## 2. Passing by Value vs. Passing by Reference
+
+* **Java is always pass-by-value**.
+* For **primitive types**, the value itself is passed.
+* For **objects**, the reference is passed **by value**, meaning both the original and the method refer to the same object.
+
+```java
 class ClassName {
     int x;
+
     ClassName(int x) {
         this.x = x;
     }
 }
+
 public class Main {
-    static void changeNumber(int x){
-        x+= 10;
+    static void changeNumber(int x) {
+        x += 10;
     }
-    static void changeNumber2(ClassName c){
-        c.x+= 10;
+
+    static void changeNumber2(ClassName c) {
+        c.x += 10;
     }
+
     public static void main(String[] args) {
         int x = 10;
         changeNumber(x);
         System.out.println(x); // 10
+
         ClassName c = new ClassName(10);
         changeNumber2(c);
         System.out.println(c.x); // 20
     }
 }
+```
 
-3. Returning Objects from Methods
-  Methods can also return objects. This is useful when you want to create and return a new object or modify an existing one and return it.
+---
 
+## 3. Returning Objects from Methods
+
+* Methods can **return objects**, either newly created or modified ones.
+* This is useful for object construction or method chaining.
+
+```java
 class Dog {
     String name;
 
@@ -74,16 +97,23 @@ public class Main {
         return newDog;
     }
 }
+```
 
-4. Comparing Objects
-  When comparing objects, you need to be careful because the == operator compares references,
-  not the actual content of the objects. To compare the content of objects, you should use the .equals() method
+---
 
+## 4. Comparing Objects
+
+* The `==` operator compares **object references**, not contents.
+* Use the `.equals()` method or custom logic to compare **contents** of objects.
+
+```java
 class ClassName {
     int x;
+
     ClassName(int x) {
         this.x = x;
     }
+
     void isEqual(ClassName c) {
         System.out.println(this.x == c.x ? "equal" : "not equal");
     }
@@ -92,9 +122,12 @@ class ClassName {
 public class Main {
     public static void main(String[] args) {
         ClassName c1 = new ClassName(100);
-        ClassName c2 = new ClassName(200);
+        ClassName c2 = new ClassName(100);
 
-        c1.isEqual(c2); // not equal
+        c1.isEqual(c2); // equal
+        System.out.println(c1 == c2 ? "equal" : "not equal"); // not equal
     }
 }
+```
 
+---
