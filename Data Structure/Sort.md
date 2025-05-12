@@ -54,7 +54,7 @@ public class Sort {
         }
         return arr;
     }
-    static int[] merge_sort(int[] arr) {
+    static int[] merge_sort(int[] arr) { // time complexity o(n log(n)) , space complexity o(n) 
         int l = 0 , r = arr.length - 1;
         if(l == r){
             int []ret = new int[1];
