@@ -90,6 +90,39 @@ public class Sort {
         }
         return finalArr;
     }
+    static void quick_sort(int[] arr,int startIdx,int endIdx) {
+        if(startIdx >= endIdx)return;
+        int left = startIdx;
+        int right = endIdx;
+        int pivotLoc = left;
+        while(left < right){
+            if(pivotLoc != right){
+                if(arr[right] < arr[pivotLoc]){
+                    int temp = arr[right];
+                    arr[right] = arr[left];
+                    arr[left] = temp;
+                    pivotLoc = right;
+                }
+            }
+            else{
+                if(arr[left] > arr[pivotLoc]){
+                    int temp = arr[left];
+                    arr[left] = arr[right];
+                    arr[right] = temp;
+                    pivotLoc = left;
+                }
+            }
+            if(right == pivotLoc){
+                left++;
+            }
+            else{
+                right--;
+            }
+        }
+        int pos = left;
+        quick_sort(arr,startIdx,pos-1);
+        quick_sort(arr,pos + 1,endIdx);
+    }
 }
 ```
 Main Class 
