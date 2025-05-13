@@ -160,3 +160,39 @@ try (FileInputStream fin = new FileInputStream(filePath)) {
 ```
 - `FileInputStream fin = new FileInputStream(filePath)` opens a file stream
 - This will automatically close the stream when done without needs of **finally**
+
+---
+
+# Throw keyword
+- The throw keyword is used to create a custom exception or error.
+- The throw keyword in Java is used to explicitly throw an exception
+from a method or any block of code. We can throw either checked
+or unchecked exception.
+
+## Example on (trow an unchecked Excpetion)
+``` java
+public class Main {
+    public static void main(String[] args) {
+        int s = getSize();
+        int[] arr = new int[s];
+    }
+
+    static int getSize() {
+        Scanner in = new Scanner(System.in);
+        int size = in.nextInt();
+        if (size < 1) throw new IllegalArgumentException("size must be positive");
+        return size;
+    }
+}
+```
+## Example on (trow an checked Excpetion)
+``` java
+public void openFile() throws FileNotFoundException {
+    String fileName = "file.txt";
+    File file = new File(fileName);
+    if (!file.exists()) {
+        throw new FileNotFoundException("file not found");
+    }
+}
+```
+----
