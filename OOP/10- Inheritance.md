@@ -1,3 +1,4 @@
+``` java
 class Employee {
     protected String name;
     protected String emailAddress;
@@ -23,8 +24,8 @@ class Employee {
         System.out.println("Employee Parametrized Constructor");
     }
 }
-
-
+```
+``` java
 public class Developer extends Employee {
     private String projectName;
 
@@ -58,7 +59,8 @@ public class Developer extends Employee {
     }
 }
 
-
+```
+``` java
 public class Main {
     public static void main(String[] args) {
         Developer dev = new Developer("Ahmed","Ahmed@gmail.com","01059464846","IT","cairo",2001,3000,"OOP");
@@ -66,9 +68,11 @@ public class Main {
 
     }
 }
-
-output: 
+```
+## output
+```{text}
 Employee Parametrized Constructor
 Developer{projectName='OOP', name='Ahmed', emailAddress='Ahmed@gmail.com', phoneNumber='01059464846', department='IT', address='cairo', yearOfBirth=2001, salary=3000.0}
+```
 
 
