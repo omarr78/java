@@ -41,7 +41,10 @@ System.out.println("rest of the code");  // This will execute after handling
 ---
 
 ### **2. `catch` Block Handling**
-The exception is caught by the appropriate `catch` block:
+- The exception is *thrown by the JVM* when you try to access `arr[10]` (invalid index)
+- The exception object is automatically created by the JVM with specific details about the error
+- `e.getMessage()` will return a helpful message like "Index 7 out of bounds for length 5"
+- The exception is caught by the appropriate `catch` block:
 ```java
 catch (ArrayIndexOutOfBoundsException | ArithmeticException ex) {
     System.out.println(ex);  // Prints the exception details
