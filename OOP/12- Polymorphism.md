@@ -1,5 +1,6 @@
-code : Employee payroll management system
+## Example: Employee payroll management system
 
+``` java
 class Employee {
     private String name;
     private float salary;
@@ -75,20 +76,24 @@ public class Main {
     }
 }
 
+```
+## Can Static Methods Be Overridden in Java?
+- No, static methods cannot be overridden in Java.
+-  Instead, they are hidden if a subclass declares a static method with the same signature.
 
------ Can Static Methods Be Overridden in Java?
-    No, static methods cannot be overridden in Java. Instead, they are hidden if a subclass declares a static method with the same signature.
+## Why Static Methods Cannot Be Overridden? Static vs. Instance Methods
+- Instance methods are bound at runtime (dynamic polymorphism).
+- Static methods are bound at compile-time (static binding).
 
------ Why Static Methods Cannot Be Overridden? Static vs. Instance Methods
-    Instance methods are bound at runtime (dynamic polymorphism).
-    Static methods are bound at compile-time (static binding).
+## Method Hiding (Not Overriding)
+- If a subclass defines a static method with the same signature as the parent's static method, it hides the parent method rather than overriding it.
+- The method called depends on the reference type, not the actual object type.
 
------ Method Hiding (Not Overriding)
-    If a subclass defines a static method with the same signature as the parent's static method, it hides the parent method rather than overriding it.
-    The method called depends on the reference type, not the actual object type.
+## Example: Static Method Hiding vs. Instance Method Overriding
 
--- Example: Static Method Hiding vs. Instance Method Overriding
-1. Static Method (Hiding)
+## 1. Static Method (Hiding)
+
+``` java 
 
 class Parent {
     static void show() {
@@ -111,16 +116,19 @@ public class Main {
         c.show(); // Calls Child's show()
     }
 }
-
-Output:
+```
+## Output:
+``` {text}
 Parent's static method  
 Child's static method  
+```
+## Key Point:
+- The method called depends on the reference type (Parent or Child).
 
-Key Point: The method called depends on the reference type (Parent or Child).
 
+## 2. Instance Method (Overriding - For Comparison)
 
-2. Instance Method (Overriding - For Comparison)
-
+``` java
 class Parent {
     void display() {
         System.out.println("Parent's instance method");
@@ -140,18 +148,21 @@ public class Main {
         p.display(); // Calls Child's display() (runtime polymorphism)
     }
 }
+```
 
-Output:
+## Output:
+``` {text}
 Child's instance method  
+```
+## Key Point:
+- The method called depends on the actual object (Child).
 
-Key Point: The method called depends on the actual object (Child).
 
+### Polymorphism means `many forms` and allows objects of different classes to be treated as objects of a common superclass.
 
-- Polymorphism means "many forms" and allows objects of different classes to be treated as objects of a common superclass.
-
-    1. Static Polymorphism (Early Binding/Compile-time Polymorphism)
-        Resolved at compile time
-        Achieved through method overloading
-   2. Dynamic Polymorphism (Late Binding/Runtime Polymorphism)
-        Resolved at runtime
-        Achieved through method overriding and inheritance
+### 1. Static Polymorphism (Early Binding/Compile-time Polymorphism)
+- Resolved at compile time
+- Achieved through method overloading
+### 2. Dynamic Polymorphism (Late Binding/Runtime Polymorphism)
+- Resolved at runtime
+- Achieved through method overriding and inheritance
