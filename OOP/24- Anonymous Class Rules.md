@@ -82,7 +82,7 @@ obj.extraMethod();  ✅ Works with var
 
 ## 1️⃣ Accessing Local Variables
 
-* ✅ Anonymous classes can access local variables **only if they are final or effectively final**.
+* ✅ Anonymous classes can access local variables **only if they are final or effectively final**.  (Java 8+)
 * ❌ Cannot modify such variables inside the anonymous class.
 
 ### Example:
