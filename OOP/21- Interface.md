@@ -1,20 +1,25 @@
-- Example on interface 
+## Example on interface 
 
-we have two interfaces (Movable , SelfDriving)
+**we have two interfaces (Movable , SelfDriving)**
 
-Movable
+**Movable**
+
+```{text}
 + moveUp() : void
 + moveDown() : void
 + moveLeft() : void
 + moveRight() : void
+```
+**SelfDriving**
 
-SelfDriving
+```{text}
 + destination (String) : void
 + drive () : void
+```
 
-and Car Class that implements two interfaces
+**and Car Class that implements two interfaces**
 
-
+``` java
 public interface Movable {
     void moveUp();
     void moveDown();
@@ -67,18 +72,21 @@ public class Car implements SelfDrivable, Movable {
         System.out.println("Drive");
     }
 }
+```
 
+---
 
-------------------------------------------------------------------------------------------
+## Default Methods in Interfaces (java 8)
 
-- Default Methods in Interfaces 
+```text
+Why We Need Default Methods? 
+When new methods are added to interfaces, all implementing classes would break.
+Default methods allow adding new functionality without breaking existing implementations. 
+```
 
-    Why We Need Default Methods? 
-        When new methods are added to interfaces, all implementing classes would break.
-        Default methods allow adding new functionality without breaking existing implementations. 
+**Basic Example of Default Method**
 
-Basic Example of Default Method :
-
+```java
 interface Vehicle {
     // Regular abstract method
     void start();
@@ -110,14 +118,14 @@ public class Main {
         car.honk();   // Output: Vehicle is honking!
     }
 }
+```
+---
 
-----------------------------------------------------------------------------------------------
+## Conflict Resolution Scenarios
 
-Conflict Resolution Scenarios :
+### Scenario 1: Class Implements Two Interfaces with Identical Default Methods
 
-Scenario 1: Class Implements Two Interfaces with Identical Default Methods
-
-
+``` java
 interface InterfaceA {
     default void show() {
         System.out.println("InterfaceA show");
@@ -142,11 +150,11 @@ class MyClass implements InterfaceA, InterfaceB {
         System.out.println("MyClass implementation");
     }
 }
+```
 
+### Scenario 2: Class Implements Two Interfaces - One Default, One Abstract
 
-Scenario 2: Class Implements Two Interfaces - One Default, One Abstract
-
-
+``` java
 interface InterfaceC {
     default void display() {
         System.out.println("InterfaceC default display");
@@ -168,10 +176,11 @@ class AnotherClass implements InterfaceC, InterfaceD {
         // InterfaceC.super.display();
     }
 }
+```
 
+### Scenario 3: Class Inheritance vs Interface Default Method
 
-Scenario 3: Class Inheritance vs Interface Default Method
-
+```java
 class ParentClass {
     public void print() {
         System.out.println("ParentClass print");
@@ -194,11 +203,11 @@ public class Main {
         cc.print();  // Output: ParentClass print
     }
 }
+```
 
+### Practical Example with Multiple Scenarios
 
-- Practical Example with Multiple Scenarios
-
-
+``` java
 interface Flyable {
     default void travel() {
         System.out.println("Flying through the air");
@@ -248,11 +257,11 @@ public class Main {
         swimFrog.travel();  // Output: Swimming through water
     }
 }
+```
 
-------------------------------------------------------------------------------------------------------
+---
+### Static Methods in Interfaces allowed
 
-!!! Static Methods in Interfaces allowed
-
-    Static methods were introduced in interfaces starting with Java 8, 
-    alongside default methods. This addition further enhanced the capabilities of interfaces in Java.
+> **Note:** Static methods were introduced in interfaces starting with Java 8,
+> alongside default methods. This addition further enhanced the capabilities of interfaces in Java.
 
