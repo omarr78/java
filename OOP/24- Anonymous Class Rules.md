@@ -162,4 +162,55 @@ var obj = new Object() {
 ```
 
 ---
+## 5️⃣ Using Instance Variables in Lambda Expressions
 
+
+``` java
+// Java Program Illustrating Lambda Expression with Instance Variables 
+
+
+// Interface 
+interface MyInterface { 
+    void myFunction(); 
+} 
+
+// Main class 
+class GFG { 
+    // Custom initialization
+    int data = 170; 
+
+    // Main driver method 
+    public static void main(String[] args) { 
+        // Creating object of this class 
+        GFG gfg = new GFG(); 
+
+        // Creating object of interface 
+        MyInterface intFace = () -> { 
+            System.out.println("Data: " + gfg.data); 
+            gfg.data += 500; 
+            System.out.println("Data after modification: " + gfg.data); 
+        }; 
+
+        // Using the lambda expression
+        intFace.myFunction(); 
+
+        // Modifying the instance variable
+        gfg.data += 200; 
+        System.out.println("Final Data: " + gfg.data); 
+    } 
+}
+
+
+```
+Output
+``` {text}
+Data: 170
+Data after modification: 670
+Final Data: 870
+```
+
+
+⚠️ Note:
+
+* Lambda expressions in Java **can access and modify instance variables**.
+* This is different from **local variables**, which must be **final or effectively final** when used inside lambdas.
