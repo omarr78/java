@@ -1,6 +1,6 @@
 
 ![Interface-01](https://github.com/user-attachments/assets/6d38e29f-2012-4d2f-84a6-4c9b74acad8a)
-![Interface-02](https://github.com/user-attachments/assets/22727e6a-e732-46f9-aed3-1024bca6bea4)
+![Interface-02](https://github.com/user-attachments/assets/b264cb7b-69ed-441d-9955-f38b1bd30c9a)
 ![Interface-03](https://github.com/user-attachments/assets/5f062106-766e-4b96-9a14-4c01549c11f1)
 ![Interface-04](https://github.com/user-attachments/assets/5736ce4a-767a-49a3-96a5-943a9aa47c72)
 ![Interface-05](https://github.com/user-attachments/assets/b6ab00d2-cbb7-4d88-be02-7e05417dc054)
