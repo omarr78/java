@@ -5,6 +5,37 @@
 
 --- 
 
+### simple Example
+
+``` java
+
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Day today = Day.FRIDAY;
+
+        switch (today) {
+            case SUNDAY:
+                System.out.println("Back to work!");
+                break;
+            case FRIDAY:
+                System.out.println("it is a weekend!");
+                break;
+            default:
+                System.out.println("Midweek day.");
+        }
+    }
+}
+```
+
+    it is a weekend!
+
+---
+
+
 ### 1. Enum Inside vs Outside Class
 
 - Enum Defined Outside a Class
