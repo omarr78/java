@@ -1,18 +1,28 @@
-In object-oriented programming (OOP), relationships between classes define how objects interact with each other. Java supports three main types of relationships:
+# Relationships Between Classes in Java OOP
 
-1. Association
+In object-oriented programming (OOP), relationships between classes define how objects interact with each other.
+Java supports **three main types of relationships**:
 
-2. Aggregation (Weak "Has-A" Relationship)
+1. **Association**
+2. **Aggregation** (Weak *Has-A* Relationship)
+3. **Composition** (Strong *Has-A* Relationship)
 
-3. Composition (Strong "Has-A" Relationship)
+---
 
-1. Association
-  Association represents a general relationship between two classes where one class uses another. It can be:
 
-  One-to-One , One-to-Many , Many-to-One , Many-to-Many
+## 1. Association
 
-Example: Teacher and Student (Many-to-Many Relationship)
+Association represents a **general relationship** between two classes where one class uses another.
+It can be:
 
+* One-to-One
+* One-to-Many
+* Many-to-One
+* Many-to-Many
+
+### Example: Teacher and Student (Many-to-Many Relationship)
+
+```java
 class Teacher {
     private String name;
     Teacher(String name) {
@@ -42,20 +52,24 @@ public class AssociationExample {
         System.out.println(teacher1.getName() + " teaches " + student1.getName() + " and " + student2.getName());
     }
 }
+```
 
-Explanation:
-  Teacher and Student are independent classes.
-  They interact but can exist independently.
+#### Explanation:
 
-
-
-2. Aggregation (Weak "Has-A" Relationship)
-  Aggregation is a specialized form of Association where one class "has" another class,
-  but both can exist independently. It represents a whole-part relationship.
-
-Example: Department and Professor
+* `Teacher` and `Student` are independent classes.
+* They **interact** but can **exist independently**.
 
 
+---
+
+## 2. Aggregation (Weak "Has-A" Relationship)
+
+Aggregation is a **specialized form of Association** where one class *"has"* another,
+but **both can exist independently** — it represents a **whole-part** relationship.
+
+### Example: Department and Professor
+
+```java
 class Professor {
     private String name;
     Professor(String name) {
@@ -67,9 +81,7 @@ class Professor {
 
     @Override
     public String toString() {
-        return "Professor{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Professor{" + "name='" + name + '\'' + '}';
     }
 }
 
@@ -84,10 +96,7 @@ class Department {
 
     @Override
     public String toString() {
-        return "Department{" +
-                "name='" + name + '\'' +
-                ", professor=" + professor +
-                '}';
+        return "Department{" + "name='" + name + '\'' + ", professor=" + professor + '}';
     }
 }
 
@@ -95,27 +104,31 @@ public class AggregationExample {
     public static void main(String[] args) {
         Professor p1 = new Professor("Omar");
         Professor p2 = new Professor("Ahmed");
-        List<Professor> professors = new ArrayList<Professor>();
+        List<Professor> professors = new ArrayList<>();
         professors.add(p1);
         professors.add(p2);
-        Department d1 = new Department("computer Science", professors);
+        Department d1 = new Department("Computer Science", professors);
 
-        System.out.println(d1); // Department{name='computer Science', professor=[Professor{name='Omar'}, Professor{name='Ahmed'}]}
+        System.out.println(d1);
     }
 }
+```
 
-Explanation:
-  Department has Professor objects.
-  If Department is deleted, Professor objects still exist.
+#### Explanation:
 
+* `Department` **has** `Professor` objects.
+* If `Department` is deleted, `Professor` objects **still exist**.
 
+---
 
-3. Composition (Strong "Has-A" Relationship)
-Composition is a stronger form of Aggregation where the child object cannot exist without the parent.
+## 3. Composition (Strong "Has-A" Relationship)
+
+Composition is a **stronger form of Aggregation** where the **child object cannot exist** without the parent.
 If the parent is destroyed, the child is also destroyed.
 
-Example: Car and Engine
+### Example: Car and Engine
 
+```java
 class Engine {
     private String type;
     Engine(String type) {
@@ -146,14 +159,21 @@ public class CompositionExample {
         car.displayDetails();
     }
 }
+```
 
-Explanation:
-  Car owns an Engine.
-  If Car is destroyed, Engine is also destroyed.
+#### Explanation:
 
+* `Car` **owns** an `Engine`.
+* If `Car` is destroyed, `Engine` is also **destroyed**.
 
+---
 
-Conclusion
-  Association: General relationship (objects interact but are independent).
-  Aggregation: Weak "has-a" relationship (objects can exist independently).
-  Composition: Strong "has-a" relationship (child cannot exist without parent).
+## Summary
+
+| Relationship | Description                                 | Independence  |
+| ------------ | ------------------------------------------- | ------------- |
+| Association  | General relationship (objects interact)     | ✅ Independent |
+| Aggregation  | Weak *has-a* (whole-part)                   | ✅ Independent |
+| Composition  | Strong *has-a* (cannot live without parent) | ❌ Dependent   |
+
+---
