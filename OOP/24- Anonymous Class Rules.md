@@ -1,23 +1,23 @@
-# 📌 1. Constructors in Anonymous Classes
+# 1. Constructors in Anonymous Classes
 
-- ❓ **Does an anonymous class have a constructor?**
-- ❌ Anonymous classes do **not have explicit constructors** that you can define.
-- 🧩 Anonymous classes have **no name**, so you **cannot define a named constructor**.
+-  **Does an anonymous class have a constructor?**
+-  Anonymous classes do **not have explicit constructors** that you can define.
+-  Anonymous classes have **no name**, so you **cannot define a named constructor**.
 
-✅ **However**:
+ **However**:
 - They **implicitly call the superclass constructor** (parameterized or non-parameterized), and **it runs first**.
 - You can use **instance initializer blocks** to perform initialization.
-- ❌ Cannot use **static initializer blocks**.
+- Cannot use **static initializer blocks**.
 
 ---
 
-# 📌 2. Adding Extra Methods in Anonymous Classes
+# 2. Adding Extra Methods in Anonymous Classes
 
-- ❓ **Can we add extra methods in anonymous classes and access them using `var`?**
-- ✅ **Yes**, you can add extra methods.
-- ✅ You can **access them only** if you use `var` (Java 10+) — which infers the exact anonymous class type.
+-  **Can we add extra methods in anonymous classes and access them using `var`?**
+-  **Yes**, you can add extra methods.
+-  You can **access them only** if you use `var` (Java 10+) — which infers the exact anonymous class type.
 
-### ✅ Example:
+### Example:
 
 ```java
 var obj = new Object() {
@@ -26,64 +26,64 @@ var obj = new Object() {
     }
 };
 
-obj.extraMethod();  ✅ Works with var
+obj.extraMethod();  Works with var
 ````
 
 ---
 
-# 📌 3. Limitations of the `var` Keyword
+# 3. Limitations of the `var` Keyword
 
-### ❌ Cannot use `var` for:
+### Cannot use `var` for:
 
 * **Class member variables**:
 
   ```java
   class Test {
-    var x = 10;  ❌ Compile error
+    var x = 10;  Compile error
   }
   ```
 
 * **Generic type parameters**:
 
   ```java
-  ArrayList<var> list = new ArrayList<>();  ❌ Error
-  var<Integer> list = new ArrayList<>();    ❌ Error
-  var list = new ArrayList<String>();       ✅ Valid
+  ArrayList<var> list = new ArrayList<>();   Error
+  var<Integer> list = new ArrayList<>();     Error
+  var list = new ArrayList<String>();        Valid
   ```
 
 * **Method parameters**:
 
   ```java
-   void method(var param) {}  ❌ Compile error
+   void method(var param) {}  Compile error
   ```
 
 * **Declaration without initialization**:
 
   ```java
-   var x;       ❌ Error - cannot infer type
+   var x;       Error - cannot infer type
    x = 10;
   ```
 
 * **Initialization with `null`**:
 
   ```java
-   var x = null;  ❌ Error - cannot infer type
+   var x = null;  Error - cannot infer type
   ```
 
 * **Return types**:
 
   ```java
-   var method() { return 10; }  ❌ Compile error
+   var method() { return 10; }  Compile error
   ```
 
 ---
 
-# 📌 4. Anonymous Class Behavior
+# 4. Anonymous Class Behavior
 
-## 1️⃣ Accessing Local Variables
+## 1- Accessing Local Variables
 
-* ✅ Anonymous classes can access local variables **only if they are final or effectively final**.  (Java 8+)
-* ❌ Cannot modify such variables inside the anonymous class.
+*  Anonymous classes can access local variables **only if they are final or effectively final**.  (Java 8+)
+*  Cannot modify such variables inside the anonymous class.
 
 ### Example:
 
@@ -93,8 +93,8 @@ void method() {
     Runnable r = new Runnable() {
         @Override
         public void run() {
-            System.out.println(d);  ✅ Access
-            d = 10;  ❌ Compile error
+            System.out.println(d);  Access
+            d = 10;  Compile error
         }
     };
 }
@@ -102,9 +102,9 @@ void method() {
 
 ---
 
-## 2️⃣ Method Context
+## 2- Method Context
 
-* ✅ Anonymous classes can be used in:
+*  Anonymous classes can be used in:
 
   * Static methods
   * Instance methods
@@ -113,9 +113,9 @@ void method() {
 
 ---
 
-## 3️⃣ Accessing Superclass Members
+## 3- Accessing Superclass Members
 
-* ✅ Anonymous classes can access:
+*  Anonymous classes can access:
 
   * All **accessible members** of their superclass/interface
   * **Final/effectively final** local variables from enclosing scope
@@ -132,7 +132,7 @@ public class Test {
     public static void main(String[] args) {
         Super s = new Super() {
             void print() {
-                System.out.println(value);  ✅ Access superclass member
+                System.out.println(value);  Access superclass member
             }
         };
     }
@@ -141,28 +141,28 @@ public class Test {
 
 ---
 
-## 4️⃣ Static Members in Anonymous Classes
+## 4- Static Members in Anonymous Classes
 
-* ❌ Cannot use:
+*  Cannot use:
 
   * Static blocks
   * Static methods
   * Static variables
 
-* ✅ Can declare **static final constants**:
+*  Can declare **static final constants**:
 
 ```java
 var obj = new Object() {
-    // static { }  ❌ Error
-    // static void method() {}  ❌ Error
-    // static int x = 10;  ❌ Error
+    // static { }  Error
+    // static void method() {}  Error
+    // static int x = 10;  Error
 
-    static final int CONSTANT = 100;  ✅ Valid
+    static final int CONSTANT = 100;  Valid
 };
 ```
 
 ---
-## 5️⃣ Using Instance Variables in Lambda Expressions
+## 5- Using Instance Variables in Lambda Expressions
 
 
 ``` java
@@ -210,7 +210,7 @@ Final Data: 870
 ```
 
 
-⚠️ Note:
+ Note:
 
 * Lambda expressions in Java **can access and modify instance variables**.
 * This is different from **local variables**, which must be **final or effectively final** when used inside lambdas.
